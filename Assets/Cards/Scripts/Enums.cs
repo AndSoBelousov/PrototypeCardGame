@@ -24,6 +24,7 @@ namespace Cards
 	{
 		InDeck,
 		InHand,
-		OnTable
+		OnTable,
+		InMove
 	}
 }

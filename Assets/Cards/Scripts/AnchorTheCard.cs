@@ -1,3 +1,4 @@
+using Cards;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;  
@@ -5,29 +6,31 @@ using UnityEngine.EventSystems;
 
 public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Camera _camera;
-    private Vector3 _offset;
+    // позиция перед началом перетаскивания
+    private Vector3 startPosition;
 
-    private void Awake()
-    {
-        _camera = Camera.main;
-    }
+    // Перетаскиваемая карта
+    private Transform draggedCard;
+    
 
+    
     public void OnBeginDrag(PointerEventData eventData)//выполняется единажды, при начале перетаскивания объекта
     {
-        _offset = transform.position - _camera.ScreenToViewportPoint(eventData.position);
+        startPosition = transform.position;
+        draggedCard = transform;
+        // Перенесите карту выше других объектов, чтобы она не была скрыта
+        draggedCard.SetAsLastSibling();
+
     }
 
     public void OnDrag(PointerEventData eventData)// каждый кадр пока тянем объект 
     {
-        Vector3 newPos = _camera.ScreenToViewportPoint(eventData.position);
-        newPos.z = 0;
-        transform.position = newPos;
+        draggedCard.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)// единажды когда отпустим объект 
     {
-        throw new System.NotImplementedException(); // todo
+        //todo
     }
 
 }
