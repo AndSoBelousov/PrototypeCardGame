@@ -5,7 +5,7 @@ using UnityEngine;
 public class GizmosCadrs : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 GizScale = new Vector3(100, 10, 10);
+    private Vector3 GizScale = new Vector3(70, 1, 100);
 
     private void OnDrawGizmos()
     {

@@ -19,4 +19,11 @@ namespace Cards
 		Mage = 1,
 		Warrior = 2
 	}
+
+	public enum CardStateType : byte
+	{
+		InDeck,
+		InHand,
+		OnTable
+	}
 }
