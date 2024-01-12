@@ -1,8 +1,7 @@
-using Cards;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;  
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,9 +10,8 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     // Перетаскиваемая карта
     private Transform draggedCard;
-    
 
-    
+
     public void OnBeginDrag(PointerEventData eventData)//выполняется единажды, при начале перетаскивания объекта
     {
         startPosition = transform.position;
@@ -21,16 +19,50 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // Перенесите карту выше других объектов, чтобы она не была скрыта
         draggedCard.SetAsLastSibling();
 
+        draggedCard.gameObject.layer = LayerMask.NameToLayer("ignore");
+
     }
 
     public void OnDrag(PointerEventData eventData)// каждый кадр пока тянем объект 
     {
-        draggedCard.position = eventData.position;
+        
+        draggedCard.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0)/ 8;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)// единажды когда отпустим объект 
     {
-        //todo
+     
+       
+        // Проверьте, есть ли цель, на которую можно положить карту
+        if (eventData.pointerEnter != null)
+        {
+
+            // Получите ссылку на цель
+            var dropZone = eventData.pointerEnter.GetComponent<DropZone>();
+
+            // Проверьте, является ли цель допустимым местом для карты
+            if (dropZone != null )
+            {
+                Debug.Log("зацеп!!!!!");
+                draggedCard.SetParent(dropZone.transform);
+                draggedCard.localPosition = Vector3.zero;
+            }
+            else
+            {
+                // Верните карту на начальную позицию, если цель недопустима
+                draggedCard.position = startPosition;
+            }
+            
+        }
+        else
+        {
+            // Верните карту на начальную позицию, если цель не была найдена
+            draggedCard.position = startPosition;
+            Debug.Log("pointerEnter равен null");
+        }
+
+        draggedCard.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
 }
