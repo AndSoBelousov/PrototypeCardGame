@@ -1,6 +1,8 @@
+using TMPro;
 using UnityEngine;  
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -40,13 +42,20 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
             // Получите ссылку на цель
             var dropZone = eventData.pointerEnter.GetComponent<DropZone>();
-
+            
             // Проверьте, является ли цель допустимым местом для карты
-            if (dropZone != null )
+            if (dropZone != null)
             {
-                Debug.Log("зацеп!!!!!");
-                draggedCard.SetParent(dropZone.transform);
-                draggedCard.localPosition = Vector3.zero;
+                if (dropZone.FreeCell != false)
+                {
+                    Debug.Log("зацеп!!!!!");
+                }
+                else
+                {
+                    Debug.Log("Занято");
+                }
+                //draggedCard.SetParent(dropZone.transform);
+                //draggedCard.localPosition = Vector3.zero;
             }
             else
             {
