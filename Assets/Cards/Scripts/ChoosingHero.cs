@@ -16,35 +16,43 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private Sprite _currentSprite;
 
     private Vector3 _panelOne = new Vector3(-365, 70, 0);
-    private Vector3 _panelTwo = new Vector3(-365, -70, 0);
+    private Vector3 _panelTwo = new Vector3(-365, -115, 0);
 
-    private bool _isPlayerOne = true;//!!!!!!!!!!!!! меняется только у текущей цели, понять как поменять у всех 
+    private HerosManager _herosManager;
 
     private void Start()
     {
-        if(_heroOnePlayer != null && _heroTwoPlayer != null)
-        {
-            //пока ничего
-        }
+        
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_isPlayerOne == true) 
-        {
-            
-            _heroOnePlayer.GetComponent<SpriteRenderer>().sprite = _currentSprite;
-            
-            StartCoroutine(MovingIcon(eventData.pointerClick));
-            Debug.Log("first click");
-        }
-        else
-        {
-            Debug.Log("next click");
-            _heroTwoPlayer.GetComponent<SpriteRenderer>().sprite = _currentSprite;
+        _herosManager = _heroOnePlayer.GetComponent<HerosManager>();
 
-            StartCoroutine(MovingIcon(eventData.pointerClick));
-            
+        if (_herosManager != null )
+        {
+            if (_herosManager.IsHeroOneSelect != true)
+            {
+
+                _heroOnePlayer.GetComponent<SpriteRenderer>().sprite = _currentSprite;
+
+                StartCoroutine(MovingIcon(eventData.pointerClick));
+                Debug.Log("first click");
+                _heroOnePlayer.GetComponent<HerosManager>().IsHeroOneSelect = true;
+            }
+            else
+            {
+                Debug.Log("next click");
+                _heroTwoPlayer.GetComponent<SpriteRenderer>().sprite = _currentSprite;
+
+                StartCoroutine(MovingIcon(eventData.pointerClick));
+                //СДЕЛАТЬ --- Закрытие UI панелей и переход к игре
+            }
+
         }
+
+
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -64,7 +72,7 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private IEnumerator MovingIcon(GameObject icon)
     {
         Vector3 startPos = icon.transform.localPosition;
-        Vector3 endPos = _isPlayerOne == true ? _panelOne : _panelTwo;
+        Vector3 endPos = _herosManager.IsHeroOneSelect == false ? _panelOne : _panelTwo;
 
         float time = 0;
         while(time < 1)
