@@ -11,7 +11,8 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private GameObject _heroOnePlayer;
     [SerializeField]
     private GameObject _heroTwoPlayer;
-
+    [SerializeField]
+    private GameObject _panalsUI;
     [SerializeField]
     private Sprite _currentSprite;
 
@@ -46,7 +47,8 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 _heroTwoPlayer.GetComponent<SpriteRenderer>().sprite = _currentSprite;
 
                 StartCoroutine(MovingIcon(eventData.pointerClick));
-                //ΡΔΕΛΐÒά --- Ηΰκπϋςθε UI οΰνελει θ οεπευξδ κ θγπε
+                //Γ‘Γ„Γ…Γ‹Γ€Γ’Γ --- Γ‡Γ ΓªΓ°Γ»Γ²Γ¨Γ¥ UI Γ―Γ Γ­Γ¥Γ«Γ¥Γ© Γ¨ Γ―Γ¥Γ°Γ¥ΓµΓ®Γ¤ Γª Γ¨Γ£Γ°Γ¥
+                StartCoroutine(StartGame());
             }
 
         }
@@ -83,4 +85,14 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         icon.GetComponent<ChoosingHero>().enabled = false;
     }
+    private IEnumerator StartGame()
+    {
+        float time = 0;
+        while(time < 0.5)
+        {
+            time + = Time.deltaTime;
+            yield return null;
+        }
+
+        //_panalsUI.enabled = false;
 }
