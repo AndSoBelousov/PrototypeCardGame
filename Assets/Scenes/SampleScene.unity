@@ -847,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: 9afe2f9dc8874f54aa3ec6d63f1b89bd, type: 3}
 --- !u!114 &354917455
 MonoBehaviour:
@@ -2710,6 +2711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: da091e3260575a34ca8d16fbf5641d0a, type: 3}
 --- !u!114 &1001107543
 MonoBehaviour:
@@ -3249,6 +3251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: cf1a656c876436044b37e3057fbd0d0a, type: 3}
 --- !u!114 &1192261728
 MonoBehaviour:
@@ -3671,6 +3674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: 61c377568d554e848b9fd6ab1b61b5e0, type: 3}
 --- !u!114 &1362222253
 MonoBehaviour:
@@ -3762,6 +3766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: 3d2aafcbd3f2b48438131f7470ce1e88, type: 3}
 --- !u!114 &1410004956
 MonoBehaviour:
@@ -5483,6 +5488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroOnePlayer: {fileID: 1467216291}
   _heroTwoPlayer: {fileID: 146955428}
+  _panalsUI: {fileID: 129830512}
   _currentSprite: {fileID: 21300000, guid: f3220ff5382dd8b428b492e70c2ee752, type: 3}
 --- !u!114 &1936232344
 MonoBehaviour:

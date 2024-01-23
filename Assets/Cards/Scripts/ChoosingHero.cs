@@ -88,11 +88,12 @@ public class ChoosingHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private IEnumerator StartGame()
     {
         float time = 0;
-        while(time < 0.5)
+        while (time < 1.3)
         {
-            time + = Time.deltaTime;
+            time += Time.deltaTime;
             yield return null;
         }
 
-        //_panalsUI.enabled = false;
+        _panalsUI.SetActive(false);
+    }
 }
