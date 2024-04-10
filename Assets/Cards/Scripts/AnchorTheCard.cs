@@ -28,7 +28,7 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnDrag(PointerEventData eventData)// каждый кадр пока тянем объект 
     {
         
-        draggedCard.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0)/ 8;
+        draggedCard.position += new Vector3(eventData.delta.x, eventData.delta.y, 0)/ 8;
 
     }
 
@@ -42,17 +42,17 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
             // Получите ссылку на цель
             var dropZone = eventData.pointerEnter.GetComponent<DropZone>();
-            
+
             // Проверьте, является ли цель допустимым местом для карты
             if (dropZone != null)
             {
-                if (dropZone.FreeCell != false)
+                if (dropZone.FreeCell)
                 {
-                    Debug.Log("зацеп!!!!!");
+                    Debug.Log("зацеп!!!!! " + dropZone.FreeCell);
                 }
                 else
                 {
-                    Debug.Log("Занято");
+                    Debug.Log("FreeCell =  " + dropZone.FreeCell);
                 }
                 //draggedCard.SetParent(dropZone.transform);
                 //draggedCard.localPosition = Vector3.zero;
@@ -61,8 +61,8 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 // Верните карту на начальную позицию, если цель недопустима
                 draggedCard.position = startPosition;
+                Debug.Log("dropZone = null");
             }
-            
         }
         else
         {

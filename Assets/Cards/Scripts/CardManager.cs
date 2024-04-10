@@ -74,7 +74,7 @@ public class CardManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                Card index = null;
+                Card index = null; 
                 for(int i = _player1Cards.Length - 1; i >= 0; i--) 
                 {
                     if (_player1Cards[i] != null)

@@ -20,7 +20,10 @@
     <Unit Id="107" Name="Boar" Uncollectible="true"/>
     <Unit Id="108" Name="Mechanical Dragonling" Uncollectible="true"/>
     <Unit Id="109" Name="Murloc scout" Uncollectible="true"/>
+    <Unit Id="110" Name="Jeweled Macaw"/>
+    #Battlecry/#:Add a random Beast to your hand.
   </Pack>
+ 
 
   <Pack Cost="2" Type="Common">
     <Unit Id="201" Name="Acidic Swamp Ooze">
