@@ -44,25 +44,14 @@ public class AnchorTheCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             var dropZone = eventData.pointerEnter.GetComponent<DropZone>();
 
             // ѕроверьте, €вл€етс€ ли цель допустимым местом дл€ карты
-            if (dropZone != null)
-            {
-                if (dropZone.FreeCell)
-                {
-                    Debug.Log("зацеп!!!!! " + dropZone.FreeCell);
-                }
-                else
-                {
-                    Debug.Log("FreeCell =  " + dropZone.FreeCell);
-                }
-                //draggedCard.SetParent(dropZone.transform);
-                //draggedCard.localPosition = Vector3.zero;
-            }
-            else
+            if (dropZone == null || dropZone.FreeCell == false)
             {
                 // ¬ерните карту на начальную позицию, если цель недопустима
                 draggedCard.position = startPosition;
                 Debug.Log("dropZone = null");
             }
+            
+            
         }
         else
         {
